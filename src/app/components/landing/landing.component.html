@@ -1,0 +1,18 @@
+<div class="news-item" *ngFor="let article of allArticles">
+  <div class="main-container">
+    <div class="news-image"><img [src]="article.urlToImage" alt="News 1" /></div>
+    <div class="news-content">
+        <h2 class="news-header">{{ article.title }}</h2>
+        <p class="news-description">{{ article.description }}</p>
+        <div class="news-details">
+          <h4><span class="details-item">Author:</span> {{ article.author }}</h4>
+          <h4><span class="details-item">Source:</span> {{ article.source.name }}</h4>
+          <h4>
+            <span class="details-item">Published Date:</span>
+            {{ article.publishedAt | date: 'dd/MM/yyyy' }}
+          </h4>
+        </div>
+        <button (click)="bookmarkNews(article)" class="bookmark-button"><img src="assets/images/bookmark.png" alt="">Bookmark</button>
+    </div>
+  </div>
+</div>

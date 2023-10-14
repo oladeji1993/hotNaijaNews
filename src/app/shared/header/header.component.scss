@@ -1,0 +1,56 @@
+.header {
+  background-color: #fff;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+/* Logo styles */
+.logo {
+  width: 11%;
+  height: auto;
+
+  @media (max-width: 768px) {
+    width: 23%;
+  }
+}
+
+/* Menu styles */
+.menu {
+  list-style: none;
+  padding: 0;
+  display: flex;
+
+  .menu-item {
+    margin-right: 20px;
+  }
+
+  .menu-item a {
+    text-decoration: none;
+    color: #0389AB;
+  }
+
+  .active-link a {
+    color: #036F95;
+    font-weight: 800;
+    font-size: 15px;
+  }
+}
+
+
+/* Marquee background styles */
+.marquee-bg {
+  background-color: #07042c;
+  padding: 10px 0;
+}
+
+/* Scrolling marquee styles */
+.marquee {
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: marquee 10s linear infinite;
+}
