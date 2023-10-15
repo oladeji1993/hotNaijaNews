@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
+import { bookmarkModel } from '../model/bookmark.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,11 +21,19 @@ export class CrudService {
     );
   }
 
-  bookmarkNews(source: string){
-    return this.http.post(`${environment.authApiUrl}/bookmark`, source)
+  bookmarkNews(payload: bookmarkModel) {
+    return this.http.post(`${environment.apiUrl}/addBookmark`, payload);
   }
 
-  getAllBookmarkedNews(sources: string){
-    return this.http.get(`${environment.newsApiUrl}/top-headlines?${sources}&apiKey=${environment.newsApiKey}`)
+  getAllBookmarkedNews() {
+    return this.http.get(
+      `${environment.apiUrl}/bookmarks`
+    );
+  }
+
+  deleteBookmarkedNews(id: string) {
+    return this.http.delete(
+      `${environment.apiUrl}/bookmark/${id}`
+    );
   }
 }

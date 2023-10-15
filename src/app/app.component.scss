@@ -1,10 +1,21 @@
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-}
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
-.body{
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .body {
     padding-top: 10rem;
+  }
+
+  .footer {
+    margin-top: auto;
+    width: 100%;
+  }
 }

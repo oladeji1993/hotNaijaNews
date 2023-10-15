@@ -1,1 +1,44 @@
-<p>bookmarked-news works!</p>
+<div class="loader">
+  <mat-spinner class="mat-spinner-color" *ngIf="loader"></mat-spinner>
+</div>
+<div class="no-news" *ngIf="emptyResponse">
+    You currently do not have any bookmarked news
+</div>
+<div class="news-item" *ngFor="let item of allBookmarked let i = index">
+  <div class="main-container">
+    <div class="news-image"><img [src]="item?.image" alt="News 1" /></div>
+    <div class="news-content">
+      <h2 class="news-header">{{ item?.title }}</h2>
+      <p class="news-description">{{ item?.description }}</p>
+      <div class="news-details">
+        <h4><span class="details-item">Author:</span> {{ item?.author }}</h4>
+        <h4>
+          <span class="details-item">Source:</span> {{ item?.bookmarkId }}
+        </h4>
+        <h4>
+          item
+          <span class="details-item">Published Date:</span>
+          {{ item?.publishedDate }}
+        </h4>
+      </div>
+      <div class="action-items">
+          <button [disabled]="btnLoader" (click)="deleteItems(item, i)" class="bookmark-button">
+            <span>
+                <img src="assets/images/delete.png" alt="" />
+                Delete
+            </span>
+          </button>
+          <div class="loader-container">
+            <span>
+                <mat-spinner
+                  *ngIf="btnLoader === i"
+                  diameter="21"
+                  class="btn-loader-color"
+                ></mat-spinner>
+              </span>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>

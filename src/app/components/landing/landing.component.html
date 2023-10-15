@@ -1,18 +1,73 @@
-<div class="news-item" *ngFor="let article of allArticles">
+<!-- loader -->
+<div class="loader">
+  <mat-spinner class="mat-spinner-color" *ngIf="loader"></mat-spinner>
+</div>
+
+<!-- dropdown section -->
+<div class="category dropdown">
+  <label>Search by news Source</label>
+  <div class="select-container">
+    <select [(ngModel)]="selectedOption">
+      <option value="cnn">CNN</option>
+      <option value="TechCrunch">TechCrunch</option>
+      <option value="Reuters">Reuters</option>
+      <option value="YouTube">YouTube</option>
+      <option value="business-insider">business-insider</option>
+    </select>
+    <button (click)="searchByCategory()" class="search-button">
+      <span *ngIf="!search">Search</span>
+      <span>
+        <mat-spinner
+          *ngIf="search"
+          diameter="22"
+          class="search-loader-color"
+        ></mat-spinner>
+      </span>
+    </button>
+  </div>
+</div>
+
+<!-- News -->
+<div class="news-item" *ngFor="let article of allArticles; let i = index">
   <div class="main-container">
-    <div class="news-image"><img [src]="article.urlToImage" alt="News 1" /></div>
+    <div class="news-image">
+      <img [src]="article.urlToImage" alt="News 1" />
+    </div>
     <div class="news-content">
-        <h2 class="news-header">{{ article.title }}</h2>
-        <p class="news-description">{{ article.description }}</p>
-        <div class="news-details">
-          <h4><span class="details-item">Author:</span> {{ article.author }}</h4>
-          <h4><span class="details-item">Source:</span> {{ article.source.name }}</h4>
-          <h4>
-            <span class="details-item">Published Date:</span>
-            {{ article.publishedAt | date: 'dd/MM/yyyy' }}
-          </h4>
+      <h2 class="news-header">{{ article.title }}</h2>
+      <p class="news-description">{{ article.description }}</p>
+      <div class="news-details">
+        <h4><span class="details-item">Author:</span> {{ article.author }}</h4>
+        <h4>
+          <span class="details-item">Source:</span> {{ article.source.name }}
+        </h4>
+        <h4>
+          <span class="details-item">Published Date:</span>
+          {{ article.publishedAt | date : "dd/MM/yyyy" }}
+        </h4>
+      </div>
+      <div class="action-items">
+        <button
+          [disabled]="btnLoader"
+          (click)="bookmarkNews(article, i)"
+          class="bookmark-button"
+        >
+          <span> <img src="assets/images/bookmark.png" alt="" />Bookmark </span>
+        </button>
+        <div class="loader-container">
+          <mat-spinner
+            *ngIf="btnLoader === i"
+            diameter="22"
+            class="btn-loader-color"
+          ></mat-spinner>
         </div>
-        <button (click)="bookmarkNews(article)" class="bookmark-button"><img src="assets/images/bookmark.png" alt="">Bookmark</button>
+      </div>
     </div>
   </div>
+</div>
+
+<!-- empty response -->
+
+<div class="no-news" *ngIf="emptyResponse">
+    Opssss!!! There is no news from this source
 </div>

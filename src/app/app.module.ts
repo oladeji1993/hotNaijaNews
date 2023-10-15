@@ -9,6 +9,15 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { BookmarkedNewsComponent } from './components/bookmarked-news/bookmarked-news.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -20,8 +29,13 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
     AppRoutingModule,
+    MatSelectModule,
     BrowserAnimationsModule
   ],
   providers: [],
